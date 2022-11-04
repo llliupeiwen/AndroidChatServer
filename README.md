@@ -11,11 +11,6 @@ ip地址和数据库连接按情况配置
   3、账号登录的查询
   4、账号注册的修改
   5、Socket实现1对1聊天服务
-  
-未实现：
-  1、聊天记录增删改
-  2、好友增删改
-  3、个人信息修改
 
 本项目参考stormzhuo，CSDN：SAKURA✿
 源码地址：https://github.com/stormzhuo0707
