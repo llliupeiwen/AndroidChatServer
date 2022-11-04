@@ -16,3 +16,8 @@ ip地址和数据库连接按情况配置
   1、聊天记录增删改
   2、好友增删改
   3、个人信息修改
+
+本项目参考stormzhuo，CSDN：SAKURA✿
+源码地址：https://github.com/stormzhuo0707
+CSDN：https://blog.csdn.net/weixin_42768634/article/details/117873901?spm=1001.2014.3001.5501
+CSDN：https://blog.csdn.net/m0_50639018/article/details/119638772
