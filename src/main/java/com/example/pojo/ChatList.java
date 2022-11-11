@@ -8,6 +8,7 @@ public class ChatList {
     private String time;
     private String showcode;
     private String number;
+    private String target;
 
     public int getId() {
         return id;
@@ -65,6 +66,10 @@ public class ChatList {
         this.number = number;
     }
 
+    public String getTarget(){return target;}
+
+    public void setTarget(String target){ this.target=target;}
+
     @Override
     public String toString() {
         return "Information{" +
@@ -75,6 +80,7 @@ public class ChatList {
                 ", time='" + time + '\'' +
                 ", showcode='" + showcode + '\'' +
                 ", number='" + number + '\'' +
+                ", target='" + target + '\'' +
                 '}';
     }
 }

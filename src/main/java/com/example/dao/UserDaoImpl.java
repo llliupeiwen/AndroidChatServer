@@ -2,12 +2,14 @@ package com.example.dao;
 
 import com.example.pojo.ChatList;
 import com.example.pojo.ContactList;
+import com.example.pojo.Message;
 import com.example.pojo.User;
 import com.example.util.JDBCUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -70,6 +72,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public int insertInformation(String titleimg, String title, String content, Date time, String number, String target){
+        String sql = "insert into chatlist (titleimg, title, content, time,number,target) values(?,?,?,?,?,?);";
+        //i如果操作成功，就是操作成功的条数
+        int i = JDBCUtil.executeUpdate(sql, titleimg, title, content, time,number,target, "1");
+        return i;
+    }
+
+    @Override
     public ArrayList<ChatList> findInformation(String number) {
         //sql
         ArrayList<ChatList> resultList = new ArrayList<>();
@@ -119,12 +129,14 @@ public class UserDaoImpl implements UserDao {
                 String img = rs.getString("img");
                 String name = rs.getString("name");
                 String number1 = rs.getString("number");
+                String friend =rs.getString("friend");
                 //将查询到的用户封装到一个User对象中
                 ContactList contactList = new ContactList();
                 contactList .setId(id);
                 contactList .setImg(img);
                 contactList .setName(name);
                 contactList .setNumber(number1);
+                contactList.setFriend(friend);
                 System.out.println("查询到的用户" + contactList);
                 contactLists.add(contactList);
             }
@@ -135,4 +147,37 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
+    @Override
+    public int insertMessage(String target, String user, String content, Date time) {
+        String sql = "insert into message (target, user, content, time) values(?,?,?,?);";
+        //i如果操作成功，就是操作成功的条数
+        int i = JDBCUtil.executeUpdate(sql, target, user, content, time);
+        return i;
+    }
+
+    public ArrayList<Message> findMessage(String target, String user){
+        String sql = "select * from message where (target=?&&user=?)||(target=?&&user=?);";
+        ResultSet rs = JDBCUtil.executeQuery(sql,target,user,user,target);
+        ArrayList<Message> messages= new ArrayList<>();
+        try {
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String target1 = rs.getString("target");
+                String user1 = rs.getString("user");
+                String content = rs.getString("content");
+                String  time = rs.getString("time");
+                Message message = new Message();
+                message.setId(id);
+                message.setTarget(target1);
+                message.setUser(user1);
+                message.setContent(content);
+                message.setTime(time);
+                messages.add(message);
+            }
+            return messages;
+        }catch (SQLException throwables){
+            throwables.printStackTrace();;
+        }
+        return null;
+    }
 }

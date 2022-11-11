@@ -5,6 +5,7 @@ public class ContactList {
     private String img;
     private String name;
     private String number;
+    private String friend;
 
     public int getId() {
         return id;
@@ -37,6 +38,10 @@ public class ContactList {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    public String getFriend(){return friend;}
+
+    public void setFriend(String friend){this.friend=friend;}
 
     @Override
     public String toString() {
