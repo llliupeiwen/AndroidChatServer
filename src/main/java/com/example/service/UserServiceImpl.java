@@ -78,4 +78,10 @@ public class UserServiceImpl implements UserService {
         Collections.sort(messages,comparator);
         return messages;
     }
+
+    @Override
+    public int deleteFriend(String number, String friend) {
+        int i=ud.deleteContact(number,friend);
+        return i;
+    }
 }

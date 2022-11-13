@@ -29,4 +29,7 @@ public interface UserService {
 
     //历史消息
     ArrayList<Message> historicalMessage(String target, String user);
+
+    //删除好友
+    int deleteFriend(String number,String friend);
 }

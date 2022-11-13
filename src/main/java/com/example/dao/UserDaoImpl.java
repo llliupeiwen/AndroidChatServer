@@ -180,4 +180,11 @@ public class UserDaoImpl implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public int deleteContact(String number, String friend) {
+        String sql = "delete from contact where (number=?&&friend=?)";
+        int i = JDBCUtil.executeUpdate(sql, number, friend);
+        return i;
+    }
 }

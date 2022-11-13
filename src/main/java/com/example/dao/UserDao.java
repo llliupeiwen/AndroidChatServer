@@ -29,4 +29,6 @@ public interface UserDao {
 
     //查找历史记录
     ArrayList<Message> findMessage(String target, String user);
+
+    int deleteContact(String number,String friend);
 }
